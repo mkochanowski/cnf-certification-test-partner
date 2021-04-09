@@ -21,9 +21,8 @@ jobs:
         run: echo "Test!"
 
   push-cnf-test-partner-image:
-    if: ${{ github.ref == 'refs/heads/main' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     name: 'Push the new `cnf-test-partner` image to Quay.io'
-    needs: test-cnf-test-partner-image
     runs-on: ubuntu-20.04
 
     steps:
