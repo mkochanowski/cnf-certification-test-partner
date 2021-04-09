@@ -3,8 +3,8 @@ on:
   workflow_run:
     workflows: ['Test the `cnf-test-partner` image']
     types: [completed]
-    # branches:
-      # - main
+    branches:
+      - main
 env:
   REGISTRY: quay.io
   IMAGE_NAME: mkochanowski/cnf-test-partner
@@ -12,14 +12,6 @@ env:
   IMAGE_CONTAINER_FILE_PATH: test-partner/Dockerfile
 
 jobs:
-  test-job:
-    name: 'Test job'
-    runs-on: ubuntu-20.04
-
-    steps:
-      - name: (dummy step) Test!
-        run: echo "Test!"
-
   push-cnf-test-partner-image:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     name: 'Push the new `cnf-test-partner` image to Quay.io'
