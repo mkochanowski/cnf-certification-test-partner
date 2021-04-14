@@ -1,0 +1,16 @@
+name: New test workflow
+on: [push, pull_request]
+defaults:
+  run:
+    shell: bash
+    working-directory: test-partner
+
+jobs:
+  test-job:
+    name: 'Test job'
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: sleep 60

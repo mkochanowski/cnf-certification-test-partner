@@ -31,3 +31,12 @@ jobs:
 
       - name: 'Test: Check if ssh is installed'
         run: docker run $IMAGE_NAME:$IMAGE_TAG which ssh
+
+  modify-existing-workflow-job:
+    name: A job in a modified workflow
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: sleep 60
